@@ -519,8 +519,10 @@ def send_email(subject, changes, shows, movie_info):
             print(f"  ✅ Email sent to {to}")
         else:
             print(f"  ❌ Resend {resp.status_code}: {resp.text}")
+            sys.exit(1)
     except requests.RequestException as e:
         print(f"  ❌ Email failed: {e}")
+        sys.exit(1)
 
 
 # ──────────────────────────────────────────────────────────────────────
