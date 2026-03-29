@@ -268,12 +268,12 @@ def parse_shows(data):
 # ──────────────────────────────────────────────────────────────────────
 def filter_shows(shows, theatre_filter, time_periods, date_codes):
     result = []
-    kws = [k.strip().lower() for k in theatre_filter.split(",")
-           if k.strip()] if theatre_filter else []
-    periods = [p.strip().lower() for p in time_periods.split(",")
-               if p.strip()] if time_periods else []
-    dates_set = set(d.strip() for d in date_codes.split(",")
-                    if d.strip()) if date_codes else set()
+    theatre_filter = theatre_filter or ""
+    time_periods = time_periods or ""
+    date_codes = date_codes or ""
+    kws = [k.strip().lower() for k in theatre_filter.split(",") if k.strip()]
+    periods = [p.strip().lower() for p in time_periods.split(",") if p.strip()]
+    dates_set = set(d.strip() for d in date_codes.split(",") if d.strip())
 
     for s in shows:
         # Theatre filter
@@ -579,13 +579,37 @@ def main():
     print(f"  🎬 {movie_info['name']}  {movie_info['language']}")
 
     # Apply filters
+    theatre_cfg = CONFIG["theatre"] or ""
+    time_cfg = CONFIG["time_period"] or ""
+    dates_cfg = CONFIG["dates"] or ""
+    if theatre_cfg or time_cfg:
+        parts = []
+        if theatre_cfg:
+            parts.append(f"theatre={theatre_cfg!r}")
+        if time_cfg:
+            parts.append(f"time={time_cfg!r}")
+        print(f"  🔍 Filters active: {', '.join(parts)}")
+    else:
+        print("  🔍 No filters set — monitoring all theatres and time periods")
     filtered = filter_shows(
         all_shows,
-        CONFIG["theatre"],
-        CONFIG["time_period"],
-        CONFIG["dates"],
+        theatre_cfg,
+        time_cfg,
+        dates_cfg,
     )
     print(f"  📊 {len(filtered)} showtime(s) after filters")
+
+    if not filtered:
+        if theatre_cfg or time_cfg:
+            print(
+                "  ⚠️  No shows match the current filters. "
+                "Check BMS_THEATRE / BMS_TIME / BMS_DATES values or "
+                "clear them to monitor all shows."
+            )
+        else:
+            print("  ⚠️  No shows to process after applying date filter.")
+        save_state(build_state([], all_dates))
+        sys.exit(0)
 
     # Build state & detect changes
     new_state = build_state(filtered, all_dates)
