@@ -6,6 +6,10 @@ on:
     - cron: '*/30 * * * *'
   workflow_dispatch:  # Manual trigger button
 
+concurrency:
+  group: bms-ticket-checker-main
+  cancel-in-progress: false
+
 jobs:
   check-tickets:
     runs-on: ubuntu-latest
@@ -15,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
@@ -37,8 +41,24 @@ jobs:
         run: uv run main.py
 
       - name: Commit updated state
+        shell: bash
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add bms_state.json
-          git diff --cached --quiet || (git commit -m "chore: update bms_state.json [skip ci]" && git push)
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: update bms_state.json [skip ci]"
+
+          # Ensure we're pushing on top of the latest main
+          git fetch origin main
+          git rebase origin/main || (git rebase --abort && git pull --rebase origin main)
+
+          # Push; if another run won the race, rebase and try once more
+          git push origin HEAD:main || (git pull --rebase origin main && git push origin HEAD:main)
