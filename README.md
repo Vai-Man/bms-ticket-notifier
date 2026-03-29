@@ -61,11 +61,16 @@ uv run main.py
 
 ## Notifications
 
-You'll receive an email **on every workflow run** with the current status of all monitored shows.
+Email behaviour depends on how the workflow is triggered:
 
-When something changes you'll also see a highlighted **Changes Detected** section listing:
+| Trigger | Email sent? |
+|---------|-------------|
+| **Manual** (`Run workflow` button) | Always — shows the current status of all monitored shows |
+| **Scheduled** (every 30 min) | Only when something changed since the last run |
+
+When something changes the email includes a highlighted **Changes Detected** section listing:
 - A new showtime added
 - A date that opened for booking
 - Seat availability changes (e.g. sold out → available)
 
-Emails show a summary of any changes and the current status of all monitored shows, grouped by theatre.
+Emails always show the current status of all monitored shows, grouped by theatre.

@@ -40,6 +40,8 @@ jobs:
           BMS_DATES: ${{ vars.BMS_DATES }}
           BMS_THEATRE: ${{ vars.BMS_THEATRE }}
           BMS_TIME: ${{ vars.BMS_TIME }}
+          # Always email on manual runs; scheduled runs only email on changes.
+          FORCE_EMAIL: ${{ github.event_name == 'workflow_dispatch' }}
         run: uv run main.py
 
       - name: Commit updated state
