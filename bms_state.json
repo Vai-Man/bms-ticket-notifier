@@ -1,9 +1,362 @@
 {
-  "shows": {},
+  "shows": {
+    "CPVJ|4335|20260331|NORMAL": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "08:30 AM",
+      "date": "20260331",
+      "cat": "NORMAL",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4335|20260331|EXECUTIVE": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "08:30 AM",
+      "date": "20260331",
+      "cat": "EXECUTIVE",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4335|20260331|PREMIUM": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "08:30 AM",
+      "date": "20260331",
+      "cat": "PREMIUM",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4336|20260331|NORMAL": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "01:15 PM",
+      "date": "20260331",
+      "cat": "NORMAL",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4336|20260331|EXECUTIVE": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "01:15 PM",
+      "date": "20260331",
+      "cat": "EXECUTIVE",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4336|20260331|PREMIUM": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "01:15 PM",
+      "date": "20260331",
+      "cat": "PREMIUM",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4337|20260331|NORMAL": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260331",
+      "cat": "NORMAL",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4337|20260331|EXECUTIVE": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260331",
+      "cat": "EXECUTIVE",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4337|20260331|PREMIUM": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260331",
+      "cat": "PREMIUM",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4412|20260331|NORMAL": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "09:00 PM",
+      "date": "20260331",
+      "cat": "NORMAL",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4412|20260331|EXECUTIVE": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "09:00 PM",
+      "date": "20260331",
+      "cat": "EXECUTIVE",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4412|20260331|PREMIUM": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "09:00 PM",
+      "date": "20260331",
+      "cat": "PREMIUM",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4412|20260331|VIP": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "09:00 PM",
+      "date": "20260331",
+      "cat": "VIP",
+      "price": "295.00",
+      "status": "3"
+    },
+    "CPVJ|4338|20260331|NORMAL": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260331",
+      "cat": "NORMAL",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4338|20260331|EXECUTIVE": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260331",
+      "cat": "EXECUTIVE",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4338|20260331|PREMIUM": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260331",
+      "cat": "PREMIUM",
+      "price": "177.00",
+      "status": "3"
+    },
+    "ABCR|1582|20260331|RECLINERS": {
+      "venue": "ABR Cinemas Neo Screen X:  Kanuru, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260331",
+      "cat": "RECLINERS",
+      "price": "295.00",
+      "status": "0"
+    },
+    "ABCR|1582|20260331|REGULAR": {
+      "venue": "ABR Cinemas Neo Screen X:  Kanuru, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260331",
+      "cat": "REGULAR",
+      "price": "147.00",
+      "status": "3"
+    },
+    "ABCR|1582|20260331|LOUNGER": {
+      "venue": "ABR Cinemas Neo Screen X:  Kanuru, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260331",
+      "cat": "LOUNGER",
+      "price": "147.00",
+      "status": "3"
+    },
+    "ABCR|1618|20260331|RECLINERS": {
+      "venue": "ABR Cinemas Neo Screen X:  Kanuru, Vijayawada",
+      "time": "11:05 PM",
+      "date": "20260331",
+      "cat": "RECLINERS",
+      "price": "295.00",
+      "status": "3"
+    },
+    "ABCR|1618|20260331|REGULAR": {
+      "venue": "ABR Cinemas Neo Screen X:  Kanuru, Vijayawada",
+      "time": "11:05 PM",
+      "date": "20260331",
+      "cat": "REGULAR",
+      "price": "147.00",
+      "status": "3"
+    },
+    "ABCR|1618|20260331|LOUNGER": {
+      "venue": "ABR Cinemas Neo Screen X:  Kanuru, Vijayawada",
+      "time": "11:05 PM",
+      "date": "20260331",
+      "cat": "LOUNGER",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|2885|20260331|NORMAL": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "10:00 AM",
+      "date": "20260331",
+      "cat": "NORMAL",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|2885|20260331|EXECUTIVE": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "10:00 AM",
+      "date": "20260331",
+      "cat": "EXECUTIVE",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|2885|20260331|PREMIUM": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "10:00 AM",
+      "date": "20260331",
+      "cat": "PREMIUM",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|2887|20260331|NORMAL": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260331",
+      "cat": "NORMAL",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|2887|20260331|EXECUTIVE": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260331",
+      "cat": "EXECUTIVE",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|2887|20260331|PREMIUM": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260331",
+      "cat": "PREMIUM",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|2888|20260331|NORMAL": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260331",
+      "cat": "NORMAL",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|2888|20260331|EXECUTIVE": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260331",
+      "cat": "EXECUTIVE",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|2888|20260331|PREMIUM": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260331",
+      "cat": "PREMIUM",
+      "price": "147.00",
+      "status": "3"
+    },
+    "INVP|87240|20260331|ROYAL": {
+      "venue": "INOX: LEPL Icon, Patamata",
+      "time": "02:15 PM",
+      "date": "20260331",
+      "cat": "ROYAL",
+      "price": "295.00",
+      "status": "3"
+    },
+    "INVP|87240|20260331|CLUB": {
+      "venue": "INOX: LEPL Icon, Patamata",
+      "time": "02:15 PM",
+      "date": "20260331",
+      "cat": "CLUB",
+      "price": "177.00",
+      "status": "3"
+    },
+    "INVP|87242|20260331|ROYAL": {
+      "venue": "INOX: LEPL Icon, Patamata",
+      "time": "10:15 PM",
+      "date": "20260331",
+      "cat": "ROYAL",
+      "price": "295.00",
+      "status": "3"
+    },
+    "INVP|87242|20260331|CLUB": {
+      "venue": "INOX: LEPL Icon, Patamata",
+      "time": "10:15 PM",
+      "date": "20260331",
+      "cat": "CLUB",
+      "price": "177.00",
+      "status": "3"
+    },
+    "LAIM|18190|20260331|ROYAL": {
+      "venue": "INOX: Laila Mall, 4K LASER, DOLBY ATMOS, M.G Road",
+      "time": "03:00 PM",
+      "date": "20260331",
+      "cat": "ROYAL",
+      "price": "295.00",
+      "status": "3"
+    },
+    "LAIM|18190|20260331|CLUB": {
+      "venue": "INOX: Laila Mall, 4K LASER, DOLBY ATMOS, M.G Road",
+      "time": "03:00 PM",
+      "date": "20260331",
+      "cat": "CLUB",
+      "price": "177.00",
+      "status": "3"
+    },
+    "INVJ|65949|20260331|CLUB": {
+      "venue": "INOX: Urvasi Complex, Gandhi Nagar",
+      "time": "09:30 PM",
+      "date": "20260331",
+      "cat": "CLUB",
+      "price": "177.00",
+      "status": "3"
+    },
+    "PRSV|15115|20260331|RECLINER": {
+      "venue": "PVR: Ripples, Vijayawada",
+      "time": "02:15 PM",
+      "date": "20260331",
+      "cat": "RECLINER",
+      "price": "295.00",
+      "status": "3"
+    },
+    "PRSV|15115|20260331|CLASSIC": {
+      "venue": "PVR: Ripples, Vijayawada",
+      "time": "02:15 PM",
+      "date": "20260331",
+      "cat": "CLASSIC",
+      "price": "177.00",
+      "status": "3"
+    },
+    "PRSV|15117|20260331|RECLINER": {
+      "venue": "PVR: Ripples, Vijayawada",
+      "time": "10:20 PM",
+      "date": "20260331",
+      "cat": "RECLINER",
+      "price": "295.00",
+      "status": "3"
+    },
+    "PRSV|15117|20260331|CLASSIC": {
+      "venue": "PVR: Ripples, Vijayawada",
+      "time": "10:20 PM",
+      "date": "20260331",
+      "cat": "CLASSIC",
+      "price": "177.00",
+      "status": "3"
+    },
+    "VCSV|1524|20260331|VICTORY CLASS": {
+      "venue": "Capital Cinemas (Victory Screen): Vijayawada",
+      "time": "05:10 PM",
+      "date": "20260331",
+      "cat": "VICTORY CLASS",
+      "price": "295.00",
+      "status": "3"
+    },
+    "VCSV|1525|20260331|VICTORY CLASS": {
+      "venue": "Capital Cinemas (Victory Screen): Vijayawada",
+      "time": "09:30 PM",
+      "date": "20260331",
+      "cat": "VICTORY CLASS",
+      "price": "295.00",
+      "status": "3"
+    }
+  },
   "dates": {
-    "20260329": "BOOKABLE",
+    "20260329": "AVAILABLE",
     "20260330": "AVAILABLE",
-    "20260331": "AVAILABLE",
+    "20260331": "BOOKABLE",
     "20260401": "AVAILABLE",
     "20260402": "AVAILABLE",
     "20260403": "NOT_OPEN",
