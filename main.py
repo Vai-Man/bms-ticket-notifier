@@ -35,6 +35,7 @@ CONFIG = {
 GMAIL_USER = os.getenv("GMAIL_USER", "")
 GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "")
 GMAIL_TO = os.getenv("GMAIL_TO", "")
+FORCE_EMAIL = os.getenv("FORCE_EMAIL", "false").strip().lower() == "true"
 
 STATE_FILE = "bms_state.json"
 
@@ -630,12 +631,13 @@ def main():
         print(f"\n  ⚡ {len(changes)} change(s) detected:")
         for c in changes:
             print(f"     {c}")
-        send_email(
-            f"BMS Alert: {movie_info['name']} - {len(changes)} change(s)",
-            changes, filtered, movie_info,
-        )
+        subject = f"BMS Alert: {movie_info['name']} - {len(changes)} change(s)"
+        send_email(subject, changes, filtered, movie_info)
     else:
         print("  ✅ No changes since last check.")
+        if FORCE_EMAIL:
+            subject = f"BMS Status: {movie_info['name']} - No changes"
+            send_email(subject, changes, filtered, movie_info)
 
     # Print current status
     print(f"\n  Current status ({len(filtered)} shows):")
