@@ -630,12 +630,12 @@ def main():
         print(f"\n  ⚡ {len(changes)} change(s) detected:")
         for c in changes:
             print(f"     {c}")
-        send_email(
-            f"BMS Alert: {movie_info['name']} - {len(changes)} change(s)",
-            changes, filtered, movie_info,
-        )
+        subject = f"BMS Alert: {movie_info['name']} - {len(changes)} change(s)"
     else:
         print("  ✅ No changes since last check.")
+        subject = f"BMS Status: {movie_info['name']} - No changes"
+
+    send_email(subject, changes, filtered, movie_info)
 
     # Print current status
     print(f"\n  Current status ({len(filtered)} shows):")

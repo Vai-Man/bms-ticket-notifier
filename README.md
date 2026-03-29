@@ -61,9 +61,11 @@ uv run main.py
 
 ## Notifications
 
-You'll receive an email when:
-- A new showtime is added
-- A date opens for booking
+You'll receive an email **on every workflow run** with the current status of all monitored shows.
+
+When something changes you'll also see a highlighted **Changes Detected** section listing:
+- A new showtime added
+- A date that opened for booking
 - Seat availability changes (e.g. sold out → available)
 
-Emails show a summary of what changed and the current status of all monitored shows, grouped by theatre.
+Emails show a summary of any changes and the current status of all monitored shows, grouped by theatre.
