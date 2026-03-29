@@ -10,6 +10,9 @@ import os
 import re
 import sys
 import json
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from html import escape
 from datetime import datetime
 from dataclasses import dataclass, field
@@ -29,9 +32,9 @@ CONFIG = {
     "time_period": os.getenv("BMS_TIME", ""),      # e.g. "evening,night", empty = all
 }
 
-RESEND_API_KEY = os.getenv("RESEND_API_KEY", "")
-RESEND_TO_EMAIL = os.getenv("RESEND_TO_EMAIL", "")
-RESEND_FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL", "vaiman@resend.dev")
+GMAIL_USER = os.getenv("GMAIL_USER", "")
+GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "")
+GMAIL_TO = os.getenv("GMAIL_TO", "")
 
 STATE_FILE = "bms_state.json"
 
@@ -39,10 +42,10 @@ STATE_FILE = "bms_state.json"
 # CONSTANTS
 # ──────────────────────────────────────────────────────────────────────
 AVAIL_STATUS_MAP = {
-    "0": ("SOLD OUT",    "🔴"),
-    "1": ("ALMOST FULL", "🟡"),
-    "2": ("FILLING FAST","🟠"),
-    "3": ("AVAILABLE",   "🟢"),
+    "0": ("SOLD OUT",    ""),
+    "1": ("ALMOST FULL", ""),
+    "2": ("FILLING FAST",""),
+    "3": ("AVAILABLE",   ""),
 }
 
 DATE_STYLE_MAP = {
@@ -354,7 +357,7 @@ def detect_changes(old_state, new_state):
         old_status = old_dates.get(dc)
         if (old_status == "NOT_OPEN"
                 and status in ("BOOKABLE", "AVAILABLE")):
-            changes.append(f"📅 NEW DATE OPENED: {dc}")
+            changes.append(f"NEW DATE OPENED: {dc}")
 
     old_shows = old_state.get("shows", {})
     new_shows = new_state.get("shows", {})
@@ -363,39 +366,44 @@ def detect_changes(old_state, new_state):
     for key in set(new_shows) - set(old_shows):
         s = new_shows[key]
         changes.append(
-            f"🆕 NEW: {s['venue']} {s['time']} [{s['date']}] "
-            f"— {s['cat']} ₹{s['price']}"
+            f"NEW: {s['venue']} {s['time']} [{s['date']}] "
+            f"- {s['cat']} \u20b9{s['price']}"
         )
 
-    # Sold out → available
+    # Sold out -> available
     for key, new_s in new_shows.items():
         old_s = old_shows.get(key)
         if old_s and old_s["status"] == "0" and new_s["status"] != "0":
-            lbl, ico = AVAIL_STATUS_MAP.get(
-                new_s["status"], ("UNKNOWN", "⚪")
+            lbl, _ = AVAIL_STATUS_MAP.get(
+                new_s["status"], ("UNKNOWN", "")
             )
             changes.append(
-                f"{ico} BACK: {new_s['venue']} {new_s['time']} "
-                f"[{new_s['date']}] — {new_s['cat']} → {lbl}"
+                f"BACK: {new_s['venue']} {new_s['time']} "
+                f"[{new_s['date']}] - {new_s['cat']} -> {lbl}"
             )
 
     return changes
 
 
 # ──────────────────────────────────────────────────────────────────────
-# EMAIL NOTIFICATION (Resend)
+# EMAIL NOTIFICATION (Gmail SMTP)
 # ──────────────────────────────────────────────────────────────────────
 def _cat_status_label(status):
     return AVAIL_STATUS_MAP.get(status, ("UNKNOWN", ""))[0]
 
 
 def send_email(subject, changes, shows, movie_info):
-    api_key = RESEND_API_KEY.strip()
-    to = RESEND_TO_EMAIL.strip()
-    frm = RESEND_FROM_EMAIL.strip() or "onboarding@resend.dev"
+    gmail_user = GMAIL_USER.strip()
+    gmail_pass = GMAIL_APP_PASSWORD.strip()
+    to_raw = GMAIL_TO.strip()
 
-    if not api_key or not to:
-        print("  ⚠️  Skipping email — RESEND_API_KEY or RESEND_TO_EMAIL not set.")
+    if not gmail_user or not gmail_pass or not to_raw:
+        print("  Skipping email — GMAIL_USER, GMAIL_APP_PASSWORD, or GMAIL_TO not set.")
+        return
+
+    to_list = [addr.strip() for addr in to_raw.split(",") if addr.strip()]
+    if not to_list:
+        print("  Skipping email — no valid recipients in GMAIL_TO.")
         return
 
     now_str = datetime.now().strftime("%d %b %Y, %I:%M %p")
@@ -478,7 +486,7 @@ def send_email(subject, changes, shows, movie_info):
 </body>
 </html>"""
 
-    # Build plain-text version with full show details
+    # Build plain-text version
     plain_lines = [subject, "", f"Checked at: {now_str}", ""]
     if changes:
         plain_lines.append("Changes Detected:")
@@ -497,27 +505,21 @@ def send_email(subject, changes, shows, movie_info):
     plain_lines.extend(["", "This is an automated alert from BMS Ticket Notifier."])
     plain = "\n".join(plain_lines)
 
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = gmail_user
+    msg["To"] = ", ".join(to_list)
+    msg.attach(MIMEText(plain, "plain"))
+    msg.attach(MIMEText(html, "html"))
+
     try:
-        resp = requests.post(
-            "https://api.resend.com/emails",
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "from": frm, "to": [to],
-                "subject": subject,
-                "text": plain, "html": html,
-            },
-            timeout=15,
-        )
-        if resp.status_code in (200, 201):
-            print(f"  ✅ Email sent to {to}")
-        else:
-            print(f"  ❌ Resend {resp.status_code}: {resp.text}")
-            sys.exit(1)
-    except requests.RequestException as e:
-        print(f"  ❌ Email failed: {e}")
+        with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+            smtp.starttls()
+            smtp.login(gmail_user, gmail_pass)
+            smtp.sendmail(gmail_user, to_list, msg.as_string())
+        print(f"  Email sent to {', '.join(to_list)}")
+    except smtplib.SMTPException as e:
+        print(f"  Email failed: {e}")
         sys.exit(1)
 
 

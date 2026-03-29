@@ -8,7 +8,7 @@ Runs every n minutes via GitHub Actions. (You can set it via cron jobs, tho GH A
 
 1. Fetches showtimes from the BookMyShow API for a given movie URL
 2. Compares results with the previous check (stored in `bms_state.json`)
-3. Sends an HTML email via [Resend](https://resend.com) if anything changed (new shows, dates opening, availability updates)
+3. Sends an HTML email via Gmail SMTP if anything changed (new shows, dates opening, availability updates)
 
 ## Setup
 
@@ -20,9 +20,9 @@ Go to **Settings → Secrets and variables → Actions** and add:
 
 | Secret | Description |
 |--------|-------------|
-| `RESEND_API_KEY` | API key from [resend.com](https://resend.com) |
-| `RESEND_FROM_EMAIL` | Email address to send notifications (use your own domain email or anything@resend.dev) |
-| `RESEND_TO_EMAIL` | Email address to receive notifications |
+| `GMAIL_USER` | Your Gmail address (e.g. `you@gmail.com`) |
+| `GMAIL_APP_PASSWORD` | [Gmail App Password](https://support.google.com/accounts/answer/185833) (16-character password) |
+| `GMAIL_TO` | Recipient email address(es) — comma-separated for multiple (e.g. `a@example.com,b@example.com`) |
 
 ### 3. Set GitHub Variables
 
@@ -52,9 +52,9 @@ export BMS_URL="https://in.bookmyshow.com/movies/chennai/.../ET00123456"
 export BMS_DATES="20260318,20260319"
 export BMS_THEATRE="PVR"
 export BMS_TIME="evening,night"
-export RESEND_API_KEY="re_..."
-export RESEND_TO_EMAIL="you@example.com"
-export RESEND_TO_EMAIL="python@resend.dev"
+export GMAIL_USER="you@gmail.com"
+export GMAIL_APP_PASSWORD="xxxx xxxx xxxx xxxx"
+export GMAIL_TO="you@example.com,friend@example.com"
 
 uv run main.py
 ```
