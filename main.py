@@ -620,6 +620,11 @@ def main():
     )
     print(f"  📊 {len(filtered)} showtime(s) after filters")
 
+    # If no explicit dates were configured, derive them from the fetched shows
+    if not check_dates_str:
+        unique_dates = sorted(set(s.date_code for s in filtered if s.date_code))
+        check_dates_str = ", ".join(_fmt_date(d) for d in unique_dates)
+
     if not filtered:
         if theatre_cfg or time_cfg:
             print(
