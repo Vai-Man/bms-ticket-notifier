@@ -14,10 +14,12 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from html import escape
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from dataclasses import dataclass, field
 from urllib.parse import urlparse
 import requests
+
+IST = timezone(timedelta(hours=5, minutes=30))
 
 # ──────────────────────────────────────────────────────────────────────
 # CONFIGURATION — edit these or set via env vars
@@ -393,7 +395,15 @@ def _cat_status_label(status):
     return AVAIL_STATUS_MAP.get(status, ("UNKNOWN", ""))[0]
 
 
-def send_email(subject, changes, shows, movie_info):
+def _fmt_date(dc):
+    """Format a YYYYMMDD date code as a human-readable string (e.g. '29 Mar 2025')."""
+    try:
+        return datetime.strptime(dc, "%Y%m%d").strftime("%d %b %Y")
+    except (ValueError, TypeError):
+        return dc
+
+
+def send_email(subject, changes, shows, movie_info, check_dates=""):
     gmail_user = GMAIL_USER.strip()
     gmail_pass = GMAIL_APP_PASSWORD.strip()
     to_raw = GMAIL_TO.strip()
@@ -407,7 +417,7 @@ def send_email(subject, changes, shows, movie_info):
         print("  Skipping email — no valid recipients in GMAIL_TO.")
         return
 
-    now_str = datetime.now().strftime("%d %b %Y, %I:%M %p")
+    now_str = datetime.now(IST).strftime("%d %b %Y, %I:%M %p IST")
     movie_name = movie_info.get("name", "Movie")
 
     # Build changes HTML
@@ -464,13 +474,14 @@ def send_email(subject, changes, shows, movie_info):
             {show_rows}
         </table>"""
 
+    date_heading = f" &mdash; {escape(check_dates)}" if check_dates else ""
     html = f"""<!doctype html>
 <html>
 <head><meta charset="utf-8"></head>
 <body style="margin:0;padding:24px;font-family:Arial,Helvetica,sans-serif;
              font-size:14px;color:#333;background:#fff;">
     <h2 style="margin:0 0 4px 0;font-size:18px;color:#111;">
-        BMS Alert: {escape(movie_name)}
+        BMS Alert: {escape(movie_name)}{date_heading}
     </h2>
     <p style="margin:0 0 20px 0;font-size:13px;color:#666;">
         {escape(now_str)}
@@ -557,6 +568,10 @@ def main():
     else:
         date_list = [""]
 
+    check_dates_str = ", ".join(
+        _fmt_date(d) for d in date_list if d
+    )
+
     print(f"  Event: {event_code}  Region: {region_code}  "
           f"Dates: {date_list}")
 
@@ -605,6 +620,11 @@ def main():
     )
     print(f"  📊 {len(filtered)} showtime(s) after filters")
 
+    # If no explicit dates were configured, derive them from the fetched shows
+    if not check_dates_str:
+        unique_dates = sorted(set(s.date_code for s in filtered if s.date_code))
+        check_dates_str = ", ".join(_fmt_date(d) for d in unique_dates)
+
     if not filtered:
         if theatre_cfg or time_cfg:
             print(
@@ -631,13 +651,15 @@ def main():
         print(f"\n  ⚡ {len(changes)} change(s) detected:")
         for c in changes:
             print(f"     {c}")
-        subject = f"BMS Alert: {movie_info['name']} - {len(changes)} change(s)"
-        send_email(subject, changes, filtered, movie_info)
+        date_part = f" [{check_dates_str}]" if check_dates_str else ""
+        subject = f"BMS Alert: {movie_info['name']}{date_part} - {len(changes)} change(s)"
+        send_email(subject, changes, filtered, movie_info, check_dates_str)
     else:
         print("  ✅ No changes since last check.")
         if FORCE_EMAIL:
-            subject = f"BMS Status: {movie_info['name']} - No changes"
-            send_email(subject, changes, filtered, movie_info)
+            date_part = f" [{check_dates_str}]" if check_dates_str else ""
+            subject = f"BMS Status: {movie_info['name']}{date_part} - No changes"
+            send_email(subject, changes, filtered, movie_info, check_dates_str)
 
     # Print current status
     print(f"\n  Current status ({len(filtered)} shows):")
