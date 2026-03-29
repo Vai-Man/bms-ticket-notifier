@@ -117,6 +117,8 @@ def parse_bms_url(url):
             result["region_slug"] = parts[idx + 1]
     return result
 
+print(f"DEBUG slug: '{region_slug}'")
+print(f"DEBUG keys: {list(REGION_MAP.keys())}")
 
 def resolve_region(slug):
     key = (slug or "").lower().strip()
