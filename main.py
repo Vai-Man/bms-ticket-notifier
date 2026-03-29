@@ -117,9 +117,6 @@ def parse_bms_url(url):
             result["region_slug"] = parts[idx + 1]
     return result
 
-print(f"DEBUG slug: '{region_slug}'")
-print(f"DEBUG keys: {list(REGION_MAP.keys())}")
-
 def resolve_region(slug):
     key = (slug or "").lower().strip()
     if key in REGION_MAP:
@@ -535,6 +532,9 @@ def main():
     parsed = parse_bms_url(CONFIG["url"])
     event_code = parsed["event_code"]
     region_slug = parsed["region_slug"]
+    
+    print(f"DEBUG slug: '{region_slug}'")
+    print(f"DEBUG keys: {list(REGION_MAP.keys())}")
     url_date = parsed.get("date_code", "")
 
     if not event_code or not region_slug:
