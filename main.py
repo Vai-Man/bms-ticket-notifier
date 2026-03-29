@@ -509,7 +509,8 @@ def send_email(subject, changes, shows, movie_info):
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = gmail_user
-    msg["To"] = ", ".join(to_list)
+    msg["To"] = gmail_user
+    msg["Bcc"] = ", ".join(to_list)
     msg.attach(MIMEText(plain, "plain"))
     msg.attach(MIMEText(html, "html"))
 
