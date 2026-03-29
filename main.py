@@ -552,8 +552,17 @@ def main():
     else:
         date_list = [""]
 
+    print(f"  URL:   {CONFIG['url']}")
     print(f"  Event: {event_code}  Region: {region_code}  "
           f"Dates: {date_list}")
+
+    # Warn when the URL contains a specific date that isn't being checked
+    if url_date and raw_dates and url_date not in date_list:
+        print(
+            f"  ⚠️  BMS_URL contains date {url_date} but BMS_DATES={raw_dates!r} "
+            f"overrides it — only {date_list} will be checked.\n"
+            f"      To also check {url_date}, add it to BMS_DATES or clear BMS_DATES."
+        )
 
     # Fetch data for each date
     all_shows = []
@@ -574,7 +583,22 @@ def main():
         all_shows.extend(parse_shows(data))
 
     if not all_shows:
-        print("  ❌ No showtimes found.")
+        available = sorted({d.date_code for d in all_dates if d.date_code})
+        if available:
+            hint = (
+                f"\n  💡 Dates returned by API for this region: {available}."
+                f"\n     Update BMS_DATES to one of these, or use the full URL "
+                f"(e.g. …/{event_code}/{available[0]}) with BMS_DATES empty."
+            )
+        else:
+            hint = (
+                "\n  💡 No date metadata returned either — check that the event "
+                "code and region are correct, or that showtimes have been released."
+            )
+        print(
+            f"  ❌ No showtimes found for {event_code} in {region_code} "
+            f"(date(s): {[dc or '(all)' for dc in date_list]}).{hint}"
+        )
         sys.exit(0)
 
     print(f"  🎬 {movie_info['name']}  {movie_info['language']}")

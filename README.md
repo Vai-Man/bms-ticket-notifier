@@ -30,10 +30,12 @@ Go to **Settings → Secrets and variables → Actions → Variables** and add:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `BMS_URL` | BookMyShow ticket page URL | `https://in.bookmyshow.com/movies/chennai/.../ET00123456` |
-| `BMS_DATES` | Dates to monitor (YYYYMMDD, comma-separated). Leave empty to auto-detect from URL. | `20260318,20260319` |
+| `BMS_URL` | BookMyShow ticket page URL. You can include a date at the end to auto-detect it. | `https://in.bookmyshow.com/movies/vijayawada/.../ET00478890/20260331` |
+| `BMS_DATES` | Dates to monitor (YYYYMMDD, comma-separated). **Leave empty** to auto-detect the date from `BMS_URL`. If set, overrides the date in the URL. | `20260331,20260401` |
 | `BMS_THEATRE` | Filter by theatre name (substring match, comma-separated) | `PVR,IMAX` |
 | `BMS_TIME` | Filter by time period (comma-separated) | `evening,night` |
+
+> **Tip:** The easiest setup is to paste the full BMS URL (including the date, e.g. `.../ET00478890/20260331`) as `BMS_URL` and leave `BMS_DATES` empty. The date is auto-detected from the URL.
 
 **Time periods:** `morning` (6–12), `afternoon` (12–16), `evening` (16–19), `night` (19–24)
 
@@ -48,8 +50,8 @@ Requires Python 3.14+ and [uv](https://docs.astral.sh/uv/).
 ```bash
 uv sync --frozen
 
-export BMS_URL="https://in.bookmyshow.com/movies/chennai/.../ET00123456"
-export BMS_DATES="20260318,20260319"
+export BMS_URL="https://in.bookmyshow.com/movies/vijayawada/.../ET00478890/20260331"
+export BMS_DATES=""          # leave empty — date is auto-detected from BMS_URL
 export BMS_THEATRE="PVR"
 export BMS_TIME="evening,night"
 export RESEND_API_KEY="re_..."
