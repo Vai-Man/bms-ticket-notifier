@@ -31,7 +31,7 @@ CONFIG = {
 
 RESEND_API_KEY = os.getenv("RESEND_API_KEY", "")
 RESEND_TO_EMAIL = os.getenv("RESEND_TO_EMAIL", "")
-RESEND_FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL", "aviiciii@resend.dev")
+RESEND_FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL", "vaiman@resend.dev")
 
 STATE_FILE = "bms_state.json"
 
@@ -69,6 +69,7 @@ REGION_MAP = {
     "kolkata":    ("KOLK",   "kolkata",    "22.573", "88.364", "tun"),
     "pune":       ("PUNE",   "pune",       "18.520", "73.856", "te2"),
     "kochi":      ("KOCH",   "kochi",      "9.932",  "76.267", "t9z"),
+    "vijayawada": ("VIJA", "vijayawada", "16.519", "80.6215", "tfc"),
 }
 
 
