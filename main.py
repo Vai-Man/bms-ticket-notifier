@@ -508,7 +508,7 @@ def send_email(subject, changes, shows, movie_info):
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
-    msg["From"] = VaiMan Alerts
+    msg["From"] = BMS Tracker <your@gmail.com>
     msg["To"] = gmail_user
     msg.attach(MIMEText(plain, "plain"))
     msg.attach(MIMEText(html, "html"))
