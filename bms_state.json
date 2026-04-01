@@ -62,7 +62,7 @@
       "date": "20260405",
       "cat": "VIP",
       "price": "295.00",
-      "status": "3"
+      "status": "0"
     },
     "CPVJ|4526|20260405|NORMAL": {
       "venue": "Cinepolis: PVP Square Mall, Vijayawada",
@@ -94,7 +94,7 @@
       "date": "20260405",
       "cat": "VIP",
       "price": "295.00",
-      "status": "3"
+      "status": "0"
     }
   },
   "dates": {
