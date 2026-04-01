@@ -1,11 +1,108 @@
 {
-  "shows": {},
+  "shows": {
+    "CPVJ|4523|20260405|NORMAL": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:00 AM",
+      "date": "20260405",
+      "cat": "NORMAL",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4523|20260405|EXECUTIVE": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:00 AM",
+      "date": "20260405",
+      "cat": "EXECUTIVE",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4523|20260405|PREMIUM": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:00 AM",
+      "date": "20260405",
+      "cat": "PREMIUM",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4523|20260405|VIP": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:00 AM",
+      "date": "20260405",
+      "cat": "VIP",
+      "price": "295.00",
+      "status": "3"
+    },
+    "CPVJ|4525|20260405|NORMAL": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260405",
+      "cat": "NORMAL",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4525|20260405|EXECUTIVE": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260405",
+      "cat": "EXECUTIVE",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4525|20260405|PREMIUM": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260405",
+      "cat": "PREMIUM",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4525|20260405|VIP": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "06:00 PM",
+      "date": "20260405",
+      "cat": "VIP",
+      "price": "295.00",
+      "status": "3"
+    },
+    "CPVJ|4526|20260405|NORMAL": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260405",
+      "cat": "NORMAL",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4526|20260405|EXECUTIVE": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260405",
+      "cat": "EXECUTIVE",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4526|20260405|PREMIUM": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260405",
+      "cat": "PREMIUM",
+      "price": "177.00",
+      "status": "3"
+    },
+    "CPVJ|4526|20260405|VIP": {
+      "venue": "Cinepolis: PVP Square Mall, Vijayawada",
+      "time": "10:40 PM",
+      "date": "20260405",
+      "cat": "VIP",
+      "price": "295.00",
+      "status": "3"
+    }
+  },
   "dates": {
-    "20260401": "BOOKABLE",
+    "20260401": "AVAILABLE",
     "20260402": "AVAILABLE",
-    "20260403": "NOT_OPEN",
-    "20260404": "NOT_OPEN",
-    "20260405": "NOT_OPEN",
+    "20260403": "AVAILABLE",
+    "20260404": "AVAILABLE",
+    "20260405": "BOOKABLE",
     "20260406": "NOT_OPEN",
     "20260407": "NOT_OPEN"
   }
