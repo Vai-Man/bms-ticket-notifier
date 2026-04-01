@@ -95,6 +95,30 @@
       "cat": "VIP",
       "price": "295.00",
       "status": "0"
+    },
+    "CPOV|3018|20260405|NORMAL": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "05:45 PM",
+      "date": "20260405",
+      "cat": "NORMAL",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|3018|20260405|EXECUTIVE": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "05:45 PM",
+      "date": "20260405",
+      "cat": "EXECUTIVE",
+      "price": "147.00",
+      "status": "3"
+    },
+    "CPOV|3018|20260405|PREMIUM": {
+      "venue": "Cinepolis: Power One Mall, Vijayawada",
+      "time": "05:45 PM",
+      "date": "20260405",
+      "cat": "PREMIUM",
+      "price": "147.00",
+      "status": "3"
     }
   },
   "dates": {
