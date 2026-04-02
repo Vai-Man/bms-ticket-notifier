@@ -94,7 +94,7 @@
       "date": "20260405",
       "cat": "VIP",
       "price": "295.00",
-      "status": "0"
+      "status": "3"
     },
     "CPOV|3018|20260405|NORMAL": {
       "venue": "Cinepolis: Power One Mall, Vijayawada",
@@ -118,6 +118,78 @@
       "date": "20260405",
       "cat": "PREMIUM",
       "price": "147.00",
+      "status": "3"
+    },
+    "INVP|87326|20260405|ROYAL": {
+      "venue": "INOX: LEPL Icon, Patamata",
+      "time": "02:30 PM",
+      "date": "20260405",
+      "cat": "ROYAL",
+      "price": "295.00",
+      "status": "3"
+    },
+    "INVP|87326|20260405|CLUB": {
+      "venue": "INOX: LEPL Icon, Patamata",
+      "time": "02:30 PM",
+      "date": "20260405",
+      "cat": "CLUB",
+      "price": "177.00",
+      "status": "3"
+    },
+    "INVP|87347|20260405|ROYAL": {
+      "venue": "INOX: LEPL Icon, Patamata",
+      "time": "06:05 PM",
+      "date": "20260405",
+      "cat": "ROYAL",
+      "price": "295.00",
+      "status": "3"
+    },
+    "INVP|87347|20260405|CLUB": {
+      "venue": "INOX: LEPL Icon, Patamata",
+      "time": "06:05 PM",
+      "date": "20260405",
+      "cat": "CLUB",
+      "price": "177.00",
+      "status": "3"
+    },
+    "INVJ|66013|20260405|CLUB": {
+      "venue": "INOX: Urvasi Complex, Gandhi Nagar",
+      "time": "02:45 PM",
+      "date": "20260405",
+      "cat": "CLUB",
+      "price": "177.00",
+      "status": "3"
+    },
+    "PRSV|15207|20260405|RECLINER": {
+      "venue": "PVR: Ripples, Vijayawada",
+      "time": "01:10 PM",
+      "date": "20260405",
+      "cat": "RECLINER",
+      "price": "295.00",
+      "status": "3"
+    },
+    "PRSV|15207|20260405|CLASSIC": {
+      "venue": "PVR: Ripples, Vijayawada",
+      "time": "01:10 PM",
+      "date": "20260405",
+      "cat": "CLASSIC",
+      "price": "177.00",
+      "status": "3"
+    },
+    "PRSV|15229|20260405|RECLINER": {
+      "venue": "PVR: Ripples, Vijayawada",
+      "time": "10:00 PM",
+      "date": "20260405",
+      "cat": "RECLINER",
+      "price": "295.00",
+      "status": "3"
+    },
+    "PRSV|15229|20260405|CLASSIC": {
+      "venue": "PVR: Ripples, Vijayawada",
+      "time": "10:00 PM",
+      "date": "20260405",
+      "cat": "CLASSIC",
+      "price": "177.00",
       "status": "3"
     }
   },
